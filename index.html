@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>zero16 · Comunidade de audiovisual, marketing, vendas e design</title>
+<meta name="description" content="A comunidade de quem cria e de quem contrata no interior paulista. Ribeirão Preto, Araraquara, Ibitinga, Itápolis, Borborema e região.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root{
+  --bg:#f6f3ee;--ink:#16140f;--muted:#6b665c;--line:#e3ded3;--card:#fffdf8;--accent:#d9440f;--on-accent:#fff;
+  --ease:cubic-bezier(0.23,1,0.32,1);
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0f0e0c;--ink:#f3efe6;--muted:#a39d90;--line:#2a2824;--card:#171613;--accent:#ff5a1f;--on-accent:#0f0e0c;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0f0e0c;--ink:#f3efe6;--muted:#a39d90;--line:#2a2824;--card:#171613;--accent:#ff5a1f;--on-accent:#0f0e0c;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--serif);font-size:28px;text-decoration:none;letter-spacing:-.01em}
+.logo i{color:var(--accent);font-style:normal}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 22px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:700 15px var(--sans);text-decoration:none;cursor:pointer;transition:transform 160ms var(--ease),opacity 160ms ease}
+.btn:active{transform:scale(0.97)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+@media (hover:hover) and (pointer:fine){.btn:hover{opacity:.9}.btn.ghost:hover{border-color:var(--ink)}.card:hover{border-color:var(--accent)}}
+.btn:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible,[role=tab]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+section{padding:88px 0}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 16px}
+h1,h2{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(46px,9vw,104px)}
+h2{font-size:clamp(34px,5.4vw,58px);max-width:18ch}
+h1 em,h2 em{color:var(--accent)}
+.lead{font-size:clamp(18px,2.2vw,21px);color:var(--muted);max-width:52ch;margin:24px 0 0}
+.hero{padding:72px 0 64px}
+.hero>.wrap>*{animation:rise 560ms var(--ease) both;animation-delay:calc(var(--i,0)*60ms)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:0;list-style:none}
+.chips li{padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;color:var(--muted)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.js .rv{opacity:0;transform:translateY(12px);transition:opacity 500ms var(--ease),transform 500ms var(--ease);transition-delay:calc(var(--i,0)*60ms)}
+.js .rv.in{opacity:1;transform:none}
+.tabs{display:inline-flex;margin-top:32px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+[role=tab]{min-height:44px;padding:0 20px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:500 15px var(--sans);cursor:pointer;transition:background-color 160ms ease,color 160ms ease}
+[role=tab][aria-selected=true]{background:var(--accent);color:var(--on-accent);font-weight:700}
+.panel{margin-top:32px;animation:rise 240ms var(--ease) both}
+.panel[hidden]{display:none}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));list-style:none;padding:0;margin:0}
+.card{padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--card);transition:border-color 200ms ease}
+.card b{display:block;font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.15;margin-bottom:10px}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.num{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.1em;margin-bottom:18px;display:block}
+.band{border-block:1px solid var(--line)}
+.rules{counter-reset:r;margin:40px 0 0;padding:0;list-style:none;display:grid;gap:0}
+.rules li{counter-increment:r;display:grid;grid-template-columns:56px 1fr;padding:22px 0;border-top:1px solid var(--line);font-size:19px}
+.rules li::before{content:"0" counter(r);font-family:var(--serif);color:var(--accent);font-size:26px;line-height:1.2}
+.rules li:last-child{border-bottom:1px solid var(--line)}
+.rules span{color:var(--muted);display:block;font-size:16px}
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px;min-height:44px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:24px;transition:transform 200ms var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin:8px 0 0;max-width:60ch}
+.join{display:grid;gap:48px;grid-template-columns:1fr}
+@media (min-width:860px){.join{grid-template-columns:1fr 1fr;align-items:start}}
+form{display:grid;gap:14px;padding:28px;border:1px solid var(--line);border-radius:24px;background:var(--card)}
+label{display:grid;gap:6px;font-size:14px;font-weight:700}
+input,select{width:100%;min-height:48px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:400 16px var(--sans)}
+form .btn{width:100%;margin-top:6px}
+.fine{font-size:13px;color:var(--muted);margin:0;text-align:center}
+footer{padding:40px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+@media (prefers-reduced-motion:reduce){
+  .hero>.wrap>*,.panel{animation:fade 200ms ease both}
+  .js .rv{transform:none;transition:opacity 200ms ease}
+  html{scroll-behavior:auto}
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#topo">zero16<i>.</i></a>
+  <a class="btn" href="#entrar">Entrar</a>
+</div></header>
+
+<main id="topo">
+<div class="hero"><div class="wrap">
+  <p class="eyebrow" style="--i:0">Comunidade regional · DDD 16</p>
+  <h1 style="--i:1">Quem cria no interior não precisa ser achado <em>por sorte.</em></h1>
+  <p class="lead" style="--i:2">A zero16 reúne gente de audiovisual, marketing, vendas e design para quem procura freela e para quem procura profissional, com confiança e sem intermediário.</p>
+  <div class="cta-row" style="--i:3">
+    <a class="btn" href="#entrar">Entrar na comunidade</a>
+    <a class="btn ghost" href="#como">Como funciona</a>
+  </div>
+  <ul class="chips" style="--i:4">
+    <li>Ribeirão Preto</li><li>Araraquara</li><li>Ibitinga</li><li>Itápolis</li><li>Borborema</li><li>e região</li>
+  </ul>
+</div></div>
+
+<section id="como" class="band"><div class="wrap">
+  <p class="eyebrow rv">Duas portas, um lugar</p>
+  <h2 class="rv" style="--i:1">Quem trabalha encontra demanda. Quem contrata encontra <em>gente validada.</em></h2>
+  <div class="tabs rv" role="tablist" aria-label="Escolha seu perfil" style="--i:2">
+    <button role="tab" id="t1" aria-selected="true" aria-controls="p1">Sou profissional</button>
+    <button role="tab" id="t2" aria-selected="false" aria-controls="p2" tabindex="-1">Procuro profissional</button>
+  </div>
+  <div class="panel" id="p1" role="tabpanel" aria-labelledby="t1">
+    <ul class="grid">
+      <li class="card"><span class="num">01</span><b>Vagas todos os dias</b><p>Oportunidades CLT, PJ e freela da região, com valor ou faixa de valor à vista.</p></li>
+      <li class="card"><span class="num">02</span><b>Apresente seu trabalho</b><p>Envie seu portfólio no grupo e seja visto por quem está contratando.</p></li>
+      <li class="card"><span class="num">03</span><b>Rede e parcerias</b><p>Monte equipe, divida projeto, empreste equipamento e aprenda com quem já fez.</p></li>
+    </ul>
+  </div>
+  <div class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+    <ul class="grid">
+      <li class="card"><span class="num">01</span><b>Peça e receba</b><p>Publique o que precisa e receba respostas de quem é da sua região.</p></li>
+      <li class="card"><span class="num">02</span><b>Portfólio antes da conversa</b><p>Veja o trabalho real de cada profissional antes de fechar qualquer coisa.</p></li>
+      <li class="card"><span class="num">03</span><b>Preço justo</b><p>Referências de mercado construídas pela própria comunidade.</p></li>
+    </ul>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow rv">O que rola lá dentro</p>
+  <h2 class="rv" style="--i:1">Um grupo livre, <em>feito de troca.</em></h2>
+  <ul class="grid" style="margin-top:40px">
+    <li class="card rv" style="--i:0"><span class="num">NETWORKING</span><b>Conexões que viram trabalho</b><p>Conheça quem atua na sua área e nas áreas vizinhas, na sua cidade e na região.</p></li>
+    <li class="card rv" style="--i:1"><span class="num">TROCA</span><b>Experiências reais</b><p>Bastidores, erros, acertos e bons processos de quem já passou pelo que você está vivendo.</p></li>
+    <li class="card rv" style="--i:2"><span class="num">DICAS</span><b>Dicas e referências</b><p>Equipamentos, ferramentas, fornecedores, cursos e tudo que ajuda a trabalhar melhor.</p></li>
+    <li class="card rv" style="--i:3"><span class="num">TODO DIA</span><b>Vagas e portfólios</b><p>CLT, PJ e freela postados a qualquer hora, e espaço livre para se apresentar com seu trabalho.</p></li>
+  </ul>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <p class="eyebrow rv">Combinados</p>
+  <h2 class="rv" style="--i:1">Curadoria é o que <em>mantém o nível.</em></h2>
+  <ol class="rules">
+    <li class="rv"><div>Portfólio obrigatório<span>Sem trabalho para mostrar, sem vitrine.</span></div></li>
+    <li class="rv"><div>Vaga com valor<span>Informe o valor ou a faixa. Transparência economiza tempo de todo mundo.</span></div></li>
+    <li class="rv"><div>Respeito ao preço<span>Sem “faço por qualquer coisa”. Valorizar o trabalho é valorizar a região.</span></div></li>
+    <li class="rv"><div>Sem spam<span>Cada canal tem seu propósito. Conteúdo fora do tema sai.</span></div></li>
+  </ol>
+</div></section>
+
+<section id="entrar"><div class="wrap join">
+  <div>
+    <p class="eyebrow">Comece agora</p>
+    <h2>Entre pela <em>porta certa.</em></h2>
+    <p class="lead">Preencha em 30 segundos. Você cai direto no WhatsApp e a gente te coloca nos grupos certos.</p>
+  </div>
+  <form id="f" novalidate>
+    <label>Seu nome<input name="nome" autocomplete="name" required></label>
+    <label>Cidade
+      <select name="cidade" required>
+        <option value="">Selecione</option><optgroup label="Principais"><option>Ribeirão Preto</option><option>Araraquara</option><option>Ibitinga</option><option>Itápolis</option><option>Borborema</option></optgroup><optgroup label="Demais cidades do DDD 16"><option>Altinópolis</option><option>Américo Brasiliense</option><option>Aramina</option><option>Barrinha</option><option>Batatais</option><option>Boa Esperança do Sul</option><option>Brodowski</option><option>Buritizal</option><option>Cajuru</option><option>Cândido Rodrigues</option><option>Cássia dos Coqueiros</option><option>Cravinhos</option><option>Cristais Paulista</option><option>Dobrada</option><option>Dourado</option><option>Dumont</option><option>Fernando Prestes</option><option>Franca</option><option>Gavião Peixoto</option><option>Guará</option><option>Guariba</option><option>Guatapará</option><option>Ibaté</option><option>Igarapava</option><option>Ipuã</option><option>Itirapuã</option><option>Ituverava</option><option>Jaboticabal</option><option>Jardinópolis</option><option>Jeriquara</option><option>Luís Antônio</option><option>Matão</option><option>Miguelópolis</option><option>Monte Alto</option><option>Morro Agudo</option><option>Motuca</option><option>Nova Europa</option><option>Nuporanga</option><option>Orlândia</option><option>Patrocínio Paulista</option><option>Pedregulho</option><option>Pitangueiras</option><option>Pontal</option><option>Pradópolis</option><option>Restinga</option><option>Ribeirão Bonito</option><option>Ribeirão Corrente</option><option>Rifaina</option><option>Rincão</option><option>Sales Oliveira</option><option>Santa Cruz da Esperança</option><option>Santa Ernestina</option><option>Santa Lúcia</option><option>Santa Rosa de Viterbo</option><option>Santo Antônio da Alegria</option><option>São Carlos</option><option>São Joaquim da Barra</option><option>São José da Bela Vista</option><option>São Simão</option><option>Serra Azul</option><option>Serrana</option><option>Sertãozinho</option><option>Tabatinga</option><option>Taiaçu</option><option>Taiúva</option><option>Taquaral</option><option>Taquaritinga</option><option>Trabiju</option><option>Viradouro</option><option>Vista Alegre do Alto</option></optgroup><option>Outra cidade</option>
+      </select></label>
+    <label>Eu sou
+      <select name="perfil" required>
+        <option value="">Selecione</option><option>Profissional (procuro trabalho)</option><option>Contratante (procuro profissional)</option><option>Os dois</option>
+      </select></label>
+    <label>Área
+      <select name="area" required>
+        <option value="">Selecione</option><option>Audiovisual</option><option>Marketing</option><option>Vendas</option><option>Design</option><option>Outra</option>
+      </select></label>
+    <label>Instagram ou portfólio<input name="link" placeholder="@seuperfil ou link"></label>
+    <button class="btn" type="submit">Entrar pelo WhatsApp</button>
+    <p class="fine" id="msg" role="status">Você será redirecionado para o WhatsApp.</p>
+  </form>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <p class="eyebrow rv">Dúvidas</p>
+  <h2 class="rv" style="--i:1" >Perguntas <em>frequentes.</em></h2>
+  <div style="margin-top:40px">
+    <details><summary>Precisa pagar para entrar?</summary><p>Não. A entrada na comunidade é gratuita.</p></details>
+    <details><summary>Posso participar sendo de outra cidade?</summary><p>Sim. O foco é a região, mas quem está por perto e quer conectar com ela é bem-vindo.</p></details>
+    <details><summary>Sou iniciante. Faz sentido para mim?</summary><p>Faz. Contanto que você tenha algum trabalho para mostrar, mesmo que pequeno, a comunidade também é lugar para aprender e crescer.</p></details>
+    <details><summary>Como funciona para quem contrata?</summary><p>Você publica o que precisa, vê o portfólio de quem responde e negocia direto com o profissional.</p></details>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>zero16 · audiovisual, marketing, vendas e design</span><span>Feito no interior paulista</span></div></footer>
+
+<script>
+(function(){
+  var WA_NUMBER="5516991609339"; // troque pelo número do WhatsApp da comunidade (DDI+DDD+número)
+  var d=document.documentElement;
+  d.classList.add("js");
+
+  var tabs=[].slice.call(document.querySelectorAll("[role=tab]"));
+  function pick(t){
+    tabs.forEach(function(x){
+      var on=x===t;
+      x.setAttribute("aria-selected",on);
+      x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute("aria-controls")).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click",function(){pick(t)});
+    t.addEventListener("keydown",function(e){
+      if(e.key==="ArrowRight"||e.key==="ArrowLeft"){
+        var n=tabs[(i+1)%tabs.length];pick(n);n.focus();
+      }
+    });
+  });
+
+  var els=document.querySelectorAll(".rv");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}});
+    },{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add("in")})}
+
+  var f=document.getElementById("f"),msg=document.getElementById("msg");
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var v=function(n){return f.elements[n].value.trim()};
+    if(!v("nome")||!v("cidade")||!v("perfil")||!v("area")){
+      msg.textContent="Preencha nome, cidade, perfil e área para continuar.";return;
+    }
+    var t="Olá! Quero entrar na comunidade zero16.\n\nNome: "+v("nome")+"\nCidade: "+v("cidade")+"\nPerfil: "+v("perfil")+"\nÁrea: "+v("area")+(v("link")?"\nPortfólio: "+v("link"):"");
+    var url="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(t);
+    msg.textContent="Abrindo o WhatsApp…";
+    var w=window.open(url,"_blank","noopener");
+    if(!w){msg.innerHTML='Se não abriu, <a href="'+url+'" target="_blank" rel="noopener">toque aqui</a>.'}
+  });
+})();
+</script>
+</body>
+</html>
